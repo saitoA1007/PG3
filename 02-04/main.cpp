@@ -1,7 +1,7 @@
-#include<iostream>
-#include<time.h>
-#include<Windows.h>
-#include<functional>
+#include <iostream>
+#include <time.h>
+#include <Windows.h>
+#include <functional>
 
 // サイコロを振る演出
 void DelayReveal(std::function<void(int, int)> fn, unsigned int delayMs, int roll, int userGuess) {

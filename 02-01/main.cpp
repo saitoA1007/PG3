@@ -1,5 +1,5 @@
-#include<iostream>
-#include<Windows.h>
+#include <iostream>
+#include <Windows.h>
 
 // 2つの値を比較して値が小さい方を返す
 template <typename Type>

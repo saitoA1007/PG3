@@ -1,5 +1,5 @@
-#include<iostream>
-#include<list>
+#include <iostream>
+#include <list>
 
 /// <summary>
 /// 駅名一覧を描画する
@@ -35,9 +35,9 @@ void AddStation(std::list<const char*>& stations, const char* beforStationName, 
 int main() {
 
 	// 1970年の駅名リストを作成
-	std::list<const char*> stationsList{ "Tokyo","Kanda","Akihabara","Okachimachi","Ueno","Uguisudani","Nippori","Tabata","Komagome",
-	"Sugamo","Otsuka","Ikebukuro","Mejiro","Takadanobaba","Shin-Okubo","Shinjuku","Yoyogi","Harajuku","Shibuya","Ebisu","Meguro",
-	"Gotanda","Osaki","Shinagawa","Tamachi","Hamamatsucho","Shimbashi","Yurakucho" };
+	std::list<const char*> stationsList{ "Tokyo", "Kanda", "Akihabara", "Okachimachi", "Ueno", "Uguisudani", "Nippori", "Tabata", "Komagome",
+	"Sugamo", "Otsuka", "Ikebukuro", "Mejiro", "Takadanobaba", "Shin-Okubo", "Shinjuku", "Yoyogi", "Harajuku", "Shibuya", "Ebisu", "Meguro",
+	"Gotanda", "Osaki", "Shinagawa", "Tamachi", "Hamamatsucho", "Shimbashi", "Yurakucho" };
 
 	// 1970念の駅名一覧を描画
 	PrintStationList(stationsList, "1970");

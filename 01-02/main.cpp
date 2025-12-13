@@ -1,8 +1,8 @@
-#include<iostream>
-#include<fstream>
-#include<sstream>
-#include<vector>
-#include<algorithm>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <vector>
+#include <algorithm>
 
 /// <summary>
 /// テキストファイルをロード、カンマ区切りでstd::vectorに保存する

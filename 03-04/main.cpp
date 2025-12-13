@@ -1,5 +1,5 @@
-#include<iostream>
-#include<numbers>
+#include <iostream>
+#include <numbers>
 
 class IShape {
 public:

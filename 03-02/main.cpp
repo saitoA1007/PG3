@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 
 // 2つ値を比較して、小さい方を返す
 template<typename Type>

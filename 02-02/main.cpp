@@ -1,5 +1,5 @@
-#include<iostream>
-#include<Windows.h>
+#include <iostream>
+#include <Windows.h>
 
 /// <summary>
 /// 再帰的な賃金を求める
