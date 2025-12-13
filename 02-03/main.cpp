@@ -1,6 +1,6 @@
-#include<iostream>
+#include <iostream>
 #include <time.h>
-#include<Windows.h>
+#include <Windows.h>
 
 // 指定した秒数の演出を実行する
 void DelayReveal(void (*fn)(int, int), unsigned int delayMs, int roll, int userGuess) {

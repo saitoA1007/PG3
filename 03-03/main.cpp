@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 
 // 掃除道具
 class CleaningItems {
