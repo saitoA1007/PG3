@@ -12,7 +12,7 @@ public:
 // 箒
 class Broom : public CleaningItems {
 
-	void Use() override{
+	void Use() override {
 		std::cout << "箒を使用しました。" << std::endl;
 	}
 };
@@ -27,7 +27,7 @@ class Cloth : public CleaningItems {
 
 int main() {
 	// 掃除道具
-	CleaningItems *CleaningItem_eaters[3];
+	CleaningItems* CleaningItem_eaters[3];
 
 	// 道具を生成する
 	for (int i = 0; i < 3; ++i) {
@@ -36,7 +36,7 @@ int main() {
 		} else {
 			CleaningItem_eaters[i] = new Cloth;
 		}
-	} 
+	}
 
 	// 道具を使用する
 	for (int i = 0; i < 3; ++i) {

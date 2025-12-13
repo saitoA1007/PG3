@@ -18,7 +18,7 @@ public:
 	Circle(float radius) : radius_(radius), area_(0.0f) {}
 
 	void Size() override {
-		area_ = std::numbers::pi_v<float> * radius_ * radius_;
+		area_ = std::numbers::pi_v<float> *radius_ * radius_;
 	}
 
 	void Draw() override {

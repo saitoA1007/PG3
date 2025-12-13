@@ -6,7 +6,7 @@
 /// </summary>
 /// <param name="stations">駅名リスト</param>
 /// <param name="year">表示する年代</param>
-void PrintStationList(const std::list<const char*>& stations,const char* year) {
+void PrintStationList(const std::list<const char*>& stations, const char* year) {
 	// 年代を描画
 	std::cout << "Year : " << year << "\n";
 	// 駅名を描画
@@ -22,7 +22,7 @@ void PrintStationList(const std::list<const char*>& stations,const char* year) {
 /// <param name="stations">駅名リスト</param>
 /// <param name="beforStationName">挿入する前の駅名</param>
 /// <param name="addStationName">追加したい駅名</param>
-void AddStation(std::list<const char*>& stations,const char* beforStationName, const char* addStationName) {
+void AddStation(std::list<const char*>& stations, const char* beforStationName, const char* addStationName) {
 	for (std::list<const char*>::iterator itr = stations.begin(); itr != stations.end(); ++itr) {
 		// 指定した駅名の次に追加したい駅名を挿入する
 		if (*itr == beforStationName) {
@@ -40,11 +40,11 @@ int main() {
 	"Gotanda","Osaki","Shinagawa","Tamachi","Hamamatsucho","Shimbashi","Yurakucho" };
 
 	// 1970念の駅名一覧を描画
-	PrintStationList(stationsList,"1970");
+	PrintStationList(stationsList, "1970");
 
 	// 西日暮里駅を追加
 	AddStation(stationsList, "Nippori", "Nishi-Nippori");
-	
+
 	// 2019年の駅名一覧を描画
 	PrintStationList(stationsList, "2019");
 
