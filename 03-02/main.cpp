@@ -14,11 +14,11 @@ Type Min(Type a, Type b) {
 int main() {
 	// int型の比較
 	std::cout << "int型の値の比較" << std::endl;
-	std::cout << "-> " << Min(1,8) << std::endl << std::endl;
+	std::cout << "-> " << Min(1, 8) << std::endl << std::endl;
 
 	// float型の比較
 	std::cout << "float型の値の比較" << std::endl;
-	std::cout << "-> " << Min(10.1f,3.3f) << std::endl << std::endl;
+	std::cout << "-> " << Min(10.1f, 3.3f) << std::endl << std::endl;
 
 	// double型の比較
 	std::cout << "double型の値の比較" << std::endl;

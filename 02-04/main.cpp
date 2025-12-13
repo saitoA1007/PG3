@@ -21,8 +21,8 @@ void DelayReveal(std::function<void(int, int)> fn, unsigned int delayMs, int rol
 
 int main() {
 	// 乱数のシード初期化
-	srand((unsigned int)time(NULL)); 
-	
+	srand((unsigned int)time(NULL));
+
 	// 入力を受け取る
 	printf("半(偶数 = 0)か丁(奇数 = 1)を入力してください\n-> ");
 	int userGuess = 0;
@@ -42,7 +42,7 @@ int main() {
 		} else {
 			printf("不正解でした");
 		}
-	};
+		};
 
 	// サイコロを振る
 	DelayReveal(ShowResult, 3000, roll, userGuess);

@@ -14,7 +14,7 @@ void LoadTxtFile(const std::string& fileName, std::vector<std::string>& names) {
 	std::ifstream file(fileName);
 
 	std::string line;
-	while (std::getline(file,line)) {
+	while (std::getline(file, line)) {
 		std::stringstream ss(line);
 		std::string name;
 		// カンマ区切りでアドレスを保存していく
@@ -44,7 +44,7 @@ int ExtractStudentIdNumber(const std::string& name) {
 			break;
 		}
 	}
-	
+
 	// 数字に変換
 	return std::stoi(numStr);
 }

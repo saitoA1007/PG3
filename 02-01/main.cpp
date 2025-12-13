@@ -21,7 +21,7 @@ int main() {
 	// double型の比較する値
 	double doubleNum1 = 2.01;
 	double doubleNum2 = 8.02;
-	
+
 	// 描画
 	std::cout << "Min(int) : " << Min(intNum1, intNum2) << "\n";
 	std::cout << "Min(float) : " << Min(floatNum1, floatNum2) << "\n";
