@@ -27,6 +27,21 @@ void LoadTxtFile(const std::string& fileName, std::vector<std::string>& names) {
 }
 
 /// <summary>
+/// 学年番号を取得する
+/// </summary>
+/// <param name="name"></param>
+/// <returns></returns>
+int ExtractYearNumber(const std::string& name) {
+	// kとgの位置を取得
+	size_t kPos = name.find('k');
+	size_t gPos = name.find('g');
+
+	// kとgの間の数字を取得
+	std::string numStr = name.substr(kPos + 1, gPos - (kPos + 1));
+	return std::stoi(numStr);
+}
+
+/// <summary>
 /// 学籍番号を取得する
 /// </summary>
 /// <param name="name">名前</param>
@@ -50,12 +65,19 @@ int ExtractStudentIdNumber(const std::string& name) {
 }
 
 /// <summary>
-/// 学籍番号を元にソートをおこなう
+/// 学年と学籍番号を元にソートをおこなう
 /// </summary>
 /// <param name="names">名前が保存されたコンテナ</param>
 void SortByStudentId(std::vector<std::string>& names) {
 	std::sort(names.begin(), names.end(),
 		[](const std::string& a, const std::string& b) {
+			int yearA = ExtractYearNumber(a);
+			int yearB = ExtractYearNumber(b);
+
+			//学年でで比較
+			if (yearA != yearB) {
+				return yearA < yearB; 
+			}
 			return ExtractStudentIdNumber(a) < ExtractStudentIdNumber(b);
 		});
 }
