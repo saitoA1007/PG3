@@ -1,7 +1,5 @@
 #include <iostream>
 #include <thread>
-#include <mutex>
-#include <condition_variable>
 
 // threadを描画する
 void PrintThread(int num)
