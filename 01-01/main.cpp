@@ -22,12 +22,16 @@ void PrintStationList(const std::list<const char*>& stations, const char* year) 
 /// <param name="stations">駅名リスト</param>
 /// <param name="beforStationName">挿入する前の駅名</param>
 /// <param name="addStationName">追加したい駅名</param>
-void AddStation(std::list<const char*>& stations, const char* beforStationName, const char* addStationName) {
-	for (std::list<const char*>::iterator itr = stations.begin(); itr != stations.end(); ++itr) {
-		// 指定した駅名の次に追加したい駅名を挿入する
-		if (*itr == beforStationName) {
-			itr = stations.insert(itr, addStationName);
+void AddStation(std::list<const char*>& stations, const char* targetStationName, const char* addStationName) {
+	for (auto itr = stations.begin(); itr != stations.end(); ++itr) {
+
+		// 文字列を比較する
+		if (std::strcmp(*itr, targetStationName) == 0) {
+			// 指定した駅の後ろに挿入
 			++itr;
+			stations.insert(itr, addStationName);
+			// 追加が終わったらループを抜ける
+			return;
 		}
 	}
 }
