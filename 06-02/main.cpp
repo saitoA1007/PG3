@@ -7,7 +7,7 @@
 #include <vector>
 
 // CSVファイルを読み込む
-void LoadMapChipCSV(std::vector<std::vector<int>>& map, std::mutex& mtx) {
+void LoadMapChipCSV(std::vector<std::vector<int>>& map, std::mutex& mtx, std::atomic<bool>& isLoading) {
 
 	// 2秒待機
 	std::this_thread::sleep_for(std::chrono::seconds(2));
@@ -15,6 +15,8 @@ void LoadMapChipCSV(std::vector<std::vector<int>>& map, std::mutex& mtx) {
 	// ファイルを開く
 	std::ifstream file("mapChip.csv");
 	if (!file.is_open()) {
+		// 開けなかった場合もロード終了とする
+		isLoading = false;
 		return;
 	}
 
@@ -32,11 +34,14 @@ void LoadMapChipCSV(std::vector<std::vector<int>>& map, std::mutex& mtx) {
 		tempMap.push_back(row);
 	}
 
-	// 読み込みが終了したら、MutexをロックしてMaineデータに書き込む
+	// 読み込みが終了したら、MutexをロックしてMainデータに書き込む
 	{
 		std::lock_guard<std::mutex> lock(mtx);
 		map = tempMap;
 	}
+
+	// データの書き込みが終わったらフラグを無効化
+	isLoading = false;
 }
 
 // マップチップ描画
@@ -52,34 +57,32 @@ void DrawMapChip(std::vector<std::vector<int>> map) {
 int main() {
 	std::vector<std::vector<int>> mapData;
 	std::mutex mtx;
-	bool isLoading = true;
+	std::atomic<bool> isLoading(true);
 
 	// バックグラウンドループ
 	std::thread th([&]() {
-		// マップを読み込む
-		LoadMapChipCSV(mapData, mtx);
-		// フラグを更新
-		isLoading = false;
+		LoadMapChipCSV(mapData, mtx, isLoading);
 	});
 
 	// メインループ
 	int count = 0;
-	while (true) {
+	while (isLoading.load()) {
 		std::cout << "\rロード中" << std::string(count % 4, '.') << "   " << std::flush;
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		count++;
+	}
 
-		// ループから抜ける
-		if (!isLoading) {
-			break;
-		}
+	// スレッドの終了を待機
+	if (th.joinable()) {
+		th.join();
 	}
 
 	// 終了の知らせを描画
 	std::cout << "\nマップの読み込み完了\n";
 	// 読み込んだマップを描画
-	DrawMapChip(mapData);
-	// スレッドの終了
-	th.join();
+	{
+		std::lock_guard<std::mutex> lock(mtx);
+		DrawMapChip(mapData);
+	}
 	return 0;
 }

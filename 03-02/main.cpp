@@ -1,27 +1,43 @@
 #include <iostream>
 
-// 2つ値を比較して、小さい方を返す
-template<typename Type>
-Type Min(Type a, Type b) {
-
-	if (a >= b) {
-		return static_cast<Type>(b);
-	} else {
-		return static_cast<Type>(a);
+template <typename T1, typename T2>
+class Comparator {
+public:
+	// 2つ値を比較して、小さい方を返す
+	auto Min(T1 a, T2 b) {
+		return (a < b) ? a : b;
 	}
-}
+};
 
 int main() {
-	// int型の比較
-	std::cout << "int型の値の比較" << std::endl;
-	std::cout << "-> " << Min(1, 8) << std::endl << std::endl;
+	// int型同士の比較
+	Comparator<int, int> compInt;
+	std::cout << "[int - int] Min(1, 8): "
+		<< compInt.Min(1, 8) << std::endl;
 
-	// float型の比較
-	std::cout << "float型の値の比較" << std::endl;
-	std::cout << "-> " << Min(10.1f, 3.3f) << std::endl << std::endl;
+	// float型同士の比較
+	Comparator<float, float> compFloat;
+	std::cout << "[float - float] Min(10.1f, 3.3f): "
+		<< compFloat.Min(10.1f, 3.3f) << std::endl;
 
-	// double型の比較
-	std::cout << "double型の値の比較" << std::endl;
-	std::cout << "-> " << Min(5.5, 12.1) << std::endl << std::endl;
+	// double同士の比較
+	Comparator<double, double> compDouble;
+	std::cout << "[double - double] Min(5.5, 12.1): "
+		<< compDouble.Min(5.5, 12.1) << std::endl;
+
+	// intとfloat型の比較
+	Comparator<int, float> compIntFloat;
+	std::cout << "[int - float] Min(5, 3.2f): "
+		<< compIntFloat.Min(5, 3.2f) << std::endl;
+
+	// intとdouble型の比較
+	Comparator<int, double> compIntDouble;
+	std::cout << "[int - double] Min(10, 9.9): "
+		<< compIntDouble.Min(10, 9.9) << std::endl;
+
+	// floatとdouble型の比較
+	Comparator<float, double> compFloatDouble;
+	std::cout << "[float - double] Min(3.3f, 2.5): "
+		<< compFloatDouble.Min(3.3f, 2.5) << std::endl;
 	return 0;
 }

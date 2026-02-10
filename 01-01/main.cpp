@@ -53,7 +53,7 @@ int main() {
 	PrintStationList(stationsList, "2019");
 
 	// 高輪ゲートウェイ駅を追加
-	AddStation(stationsList, "Tamachi", "Takanawa Gateway");
+	AddStation(stationsList, "Shinagawa", "Takanawa Gateway");
 
 	// 2022年のの駅名一覧を描画
 	PrintStationList(stationsList, "2022");
